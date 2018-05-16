@@ -4,7 +4,7 @@ pipeline {
         stage("Stage 1") {
             when { branch 'master' }
             steps{
-                sh 'docker run -d --rm -p 8888:8080 jenkins-ansible'
+                sh 'ansible-playbook site.yml'
             }
         }
          stage("master") {
@@ -12,7 +12,7 @@ pipeline {
                 steps{
                 sh 'docker build  -t jenkins-ansible .'
             }
-         
+
         }
     }
 }
