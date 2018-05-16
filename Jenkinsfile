@@ -2,14 +2,17 @@ pipeline {
     agent any
     stages {
         stage("Stage 1") {
+            when { branch 'master' }
             steps{
-                echo 'Hello'
+                echo 'Found master'
             }
         }
-         stage("Stage 2") {
+         stage("master") {
+             when { branch 'integration' }
                 steps{
-                echo 'Hello'
+                echo 'Found integration'
             }
+         
         }
     }
 }
