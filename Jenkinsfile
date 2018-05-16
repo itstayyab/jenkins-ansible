@@ -4,13 +4,13 @@ pipeline {
         stage("Stage 1") {
             when { branch 'master' }
             steps{
-                echo 'Found master'
+                sh 'docker run -d --rm -p 8888:8080 jenkins-ansible'
             }
         }
          stage("master") {
              when { branch 'integration' }
                 steps{
-                echo 'Found integration'
+                sh 'docker build  -t jenkins-ansible .'
             }
          
         }
