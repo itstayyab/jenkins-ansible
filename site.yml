@@ -1,2 +1,11 @@
 ---
-- hosts
+- hosts: localhost
+  gather_facts: false
+  connection: local
+
+#  vars_files:
+#    - group_vars/install
+
+  tasks:
+   - name: Start docker image
+     command: docker run -d --rm -p 8888:8080 jenkins-ansible
